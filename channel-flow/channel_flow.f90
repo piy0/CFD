@@ -255,11 +255,11 @@ Subroutine Calc_Poisson
       Do j=1,Ny-1
       Do i=1,Nx-1
          f(i,j) = r1_dt*(   ( U(i+1,j  )-U(i-1,j  ) ) / (2.0d0*dx)   &
-                      + ( V(i  ,j+1)-V(i  ,j-1) ) / (2.0d0*dy) )
+                          + ( V(i  ,j+1)-V(i  ,j-1) ) / (2.0d0*dy) )
          P_prev = P(i,j)
-         P(i,j) = (  dx*dx*(P(i,j+1)+P(i,j-1)) &
-                +dy*dy*(P(i+1,j)+P(i-1,j)) &
-                -dx*dx*dy*dy*f(i,j) ) / (2.0d0*(dx*dx+dy*dy))
+         P(i,j) = (  dx*dx*(P(i,j+1)+P(i,j-1))                       &
+                    +dy*dy*(P(i+1,j)+P(i-1,j))                       &
+                    -dx*dx*dy*dy*f(i,j) ) / (2.0d0*(dx*dx+dy*dy))
          If (MaxP.LT.abs(P(i,j))) MaxP = P(i,j)
          CurErr = ( abs(P(i,j)-P_prev) ) / MaxP
 
